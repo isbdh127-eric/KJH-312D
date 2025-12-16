@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>全台居家醫療查詢系統</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.png" type="image/png">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>全台居家醫療查詢系統</h1>
+      <button id="themeToggle" class="theme-toggle">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+        </svg>
+      </button>
+    </header>
+
+    <div class="filter-controls">
+      <div class="select-group">
+        <select id="citySelect" class="custom-select"></select>
+        <select id="districtSelect" class="custom-select"></select>	
+	<select id="serviceSelect">
+  	<option value="">全部醫療項目</option>
+  	<option value="居家醫療">居家醫療</option>
+ 	<option value="重度居家醫療">重度居家醫療</option>
+ 	<option value="安寧居家療護">安寧居家療護</option>
+ 	<option value="居家呼吸照護">居家呼吸照護</option>
+  	<option value="居家中醫醫療">居家中醫醫療</option>
+  	<option value="居家藥事照護">居家藥事照護</option>
+ 	<option value="在宅急症照護">在宅急症照護</option>
+	</select>
+      </div>
+
+      <div class="quick-filter-buttons">
+        <button class="filter-btn" data-type="全部">全部</button>
+        <button class="filter-btn" data-type="醫院">醫院</button>
+        <button class="filter-btn" data-type="診所">診所</button>
+        <button class="filter-btn" data-type="護理之家">護理之家</button>
+      </div>
+
+      <div class="search-group">
+        <input type="text" id="keyword" placeholder="搜尋 機構名稱、地址、團隊..." class="search-input">
+        <button id="searchBtn" class="search-btn">搜尋</button>
+      </div>
+
+
+
+
+
+      <p id="status" class="status-bar">資料載入中...</p>
+    </div>
+
+    <div class="table-responsive">
+      <table id="resultTable">
+        <thead>
+          <tr>
+            <th>醫事機構名稱</th>
+            <th>地址</th>
+            <th>電話</th>
+            <th>整合團隊名稱</th>
+            <th>來源</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td colspan="5">請等待資料載入...</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div id="pagination" class="pagination-controls"></div>
+
+    <div class="data-source-info">
+      <p>資料來源：衛生福利部開放資料（A21030000I-D2000H-001.csv）</p>
+    </div>
+  </div>
+
+  <div id="detailModal" class="modal">
+    <div class="modal-content">
+      <span id="closeModal" class="close-btn">&times;</span>
+      <h2 id="modalTitle"></h2>
+      <div class="detail-item"><strong>機構代碼：</strong><span id="modalCode"></span></div>
+      <div class="detail-item"><strong>整合團隊：</strong><span id="modalTeam"></span></div>
+      <div class="detail-item"><strong>地址：</strong><span id="modalAddr"></span></div>
+      <div class="detail-item"><strong>電話：</strong><span id="modalPhone"></span></div>
+      <div class="detail-item"><strong>來源：</strong><span id="modalSource"></span></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
